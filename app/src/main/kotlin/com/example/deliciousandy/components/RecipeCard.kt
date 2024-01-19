@@ -1,8 +1,6 @@
 package com.example.deliciousandy.components
 
-import android.content.res.Resources.Theme
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,8 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -22,7 +19,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,9 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.example.deliciousandy.MainActivity
 import com.example.deliciousandy.R
 import com.example.deliciousandy.data.Recipe
 
@@ -60,7 +54,7 @@ fun RecipeCard(recipe: Recipe) {
             ) {
                 Image(
                     painter = painterResource(R.drawable.test_spagetti),
-                    contentDescription = "Food Picture",
+                    contentDescription = "Food Picture"
                 )
                 Text(text = recipe.name)
             }
@@ -87,13 +81,20 @@ fun RecipeCard(recipe: Recipe) {
                             .fillMaxWidth() // Make the Text take the full width
                             .padding(bottom = 8.dp) // Add bottom padding for separation
                     )
+
+                    Image(
+                        painter = painterResource(R.drawable.test_spagetti),
+                        contentDescription = "Food Picture",
+                        modifier = Modifier.clip(RoundedCornerShape(10.dp))
+                    )
+
                     Text(
                         text = recipe.body,
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.fillMaxWidth() // Make the Text take the full width
                     )
 
-                    Row() {
+                    Row {
                         IconButton(
                             onClick = {
                                 println("Star")},
