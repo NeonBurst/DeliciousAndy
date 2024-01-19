@@ -16,12 +16,14 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,6 +44,7 @@ import com.example.deliciousandy.utility.ConverterJSON
 // Add view recipe
 // Add edit recipe
 
+@OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
 
     private var recipeList: List<Recipe> = listOf()
@@ -59,7 +62,7 @@ class MainActivity : ComponentActivity() {
 
                 // A surface container using the 'background' color from the theme
                 Scaffold(
-
+                    topBar = { TopAppBar(title = { Text("Recipes") })},
                     floatingActionButton = {
                         FloatingActionButton(onClick = { showAddUI = !showAddUI }) {
                             Icon(Icons.Filled.Add, "Add button")
@@ -69,10 +72,10 @@ class MainActivity : ComponentActivity() {
                     containerColor = MaterialTheme.colorScheme.background
 
                 ) { padding ->
-
-                    Column {
-                        Text(" Recipes", style = MaterialTheme.typography.titleLarge)
-
+                    Column(
+                        modifier = Modifier
+                            .padding(padding)
+                    ) {
                         LazyColumn {
                             items(recipeList) { sample ->
                                 RecipeCard(sample)
@@ -81,8 +84,6 @@ class MainActivity : ComponentActivity() {
                         }
 
                     }
-
-
 
                 }
 
