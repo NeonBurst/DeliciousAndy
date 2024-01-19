@@ -43,7 +43,7 @@ import com.example.deliciousandy.utility.ConverterJSON
 // Add edit recipe
 
 class MainActivity : ComponentActivity() {
-    
+
     private var recipeList: List<Recipe> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,15 +56,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             DeliciousAndyTheme {
                 var showAddUI: Boolean by remember { mutableStateOf(false) }
+
                 // A surface container using the 'background' color from the theme
                 Scaffold(
-                    floatingActionButton = {FloatingActionButton(onClick = {showAddUI = !showAddUI}) {
-                        Icon(Icons.Filled.Add, "Add button")
-                    }},
+
+                    floatingActionButton = {
+                        FloatingActionButton(onClick = { showAddUI = !showAddUI }) {
+                            Icon(Icons.Filled.Add, "Add button")
+                        }
+                    },
                     modifier = Modifier.fillMaxSize(),
                     containerColor = MaterialTheme.colorScheme.background
 
-                ) {
+                ) { padding ->
 
                     Column {
                         Text(" Recipes", style = MaterialTheme.typography.titleLarge)
@@ -77,59 +81,64 @@ class MainActivity : ComponentActivity() {
                         }
 
                     }
-                    if (showAddUI) {
-                        Card(modifier = Modifier
-                            .size(width = 240.dp, height = 100.dp)) {
-                            Column {
-                                Text(
-                                    text = "Add Recipe",
-                                    modifier = Modifier
-                                        .padding(16.dp),
-                                    textAlign = TextAlign.Center,
+
+
+
+                }
+
+                if (showAddUI) {
+                    Card(
+                        modifier = Modifier
+                        .fillMaxSize()) {
+                        Column {
+                            Text(
+                                text = "Add Recipe",
+                                modifier = Modifier
+                                    .padding(16.dp),
+                                textAlign = TextAlign.Center,
+                            )
+
+                            var titleText by remember { mutableStateOf("") }
+                            TextField(
+                                value = titleText,
+                                onValueChange = { newText ->
+                                    titleText = newText
+                                },
+                                label = { Text(text = "Recipe Name") },
+                                maxLines = 1
+
+                            )
+
+                            Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
+
+                            var bodyText by remember { mutableStateOf("") }
+                            TextField(
+                                value = bodyText,
+                                onValueChange = { newText ->
+                                    bodyText = newText
+                                },
+                                label = { Text(text = "Recipe Instructions") },
+
                                 )
 
-                                var titleText by remember { mutableStateOf("") }
-                                TextField(
-                                    value = titleText,
-                                    onValueChange = { newText ->
-                                        titleText = newText
-                                    },
-                                    label = { Text(text = "Recipe Name") },
-                                    maxLines = 1
+                            ActivityResultContracts.PickVisualMedia()
 
-                                )
-
-                                Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
-
-                                var bodyText by remember { mutableStateOf("") }
-                                TextField(
-                                    value = bodyText,
-                                    onValueChange = { newText ->
-                                        bodyText = newText
-                                    },
-                                    label = { Text(text = "Recipe Instructions") },
-
-                                )
-
-                                ActivityResultContracts.PickVisualMedia()
-
-                                Button(onClick = {
-                                    addRecipe(Recipe(titleText, bodyText))
-                                    showAddUI = false
-                                }) {
-                                    Text("Add")
-                                }
+                            Button(onClick = {
+                                addRecipe(Recipe(titleText, bodyText))
+                                showAddUI = false
+                            }) {
+                                Text("Add")
                             }
-
-
-
                         }
+
+
                     }
                 }
+
             }
         }
     }
-    
+
     private fun addRecipe(recipe: Recipe) {
         recipeList += recipe
         /*val j = ConverterJSON()
@@ -138,7 +147,11 @@ class MainActivity : ComponentActivity() {
         println("Hi Jason" + j.loadJsonFromFile("recipe.json", this))*/
 
         val converterJSON = ConverterJSON()
-        converterJSON.saveJsonToFile(converterJSON.convertRecipeJSON(AppData("U", recipeList)), "data.json", this)
+        converterJSON.saveJsonToFile(
+            converterJSON.convertRecipeJSON(AppData("U", recipeList)),
+            "data.json",
+            this
+        )
         update()
     }
 
