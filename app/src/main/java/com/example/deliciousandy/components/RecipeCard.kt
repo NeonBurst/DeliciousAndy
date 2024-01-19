@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.deliciousandy.MainActivity
 import com.example.deliciousandy.data.Recipe
 
 @Composable
@@ -77,12 +78,13 @@ fun RecipeCard(recipe: Recipe) {
 
                     Row() {
                         IconButton(
-                            onClick = {println("Star")},
+                            onClick = {
+                                println("Star")},
                             modifier = Modifier.padding(8.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Star,
-                                tint = Color.Black,
+                                tint = if (recipe.starred) Color.Yellow else Color.Black,
                                 contentDescription = ""
                             )
                         }
@@ -107,11 +109,10 @@ fun RecipeCard(recipe: Recipe) {
                             )
                         }
                     }
-
                 }
             }
-
         }
     }
-
 }
+
+

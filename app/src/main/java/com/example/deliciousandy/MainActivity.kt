@@ -66,6 +66,7 @@ class MainActivity : ComponentActivity() {
                         LazyColumn {
                             items(recipeList) { sample ->
                                 RecipeCard(sample)
+
                             }
                         }
 
