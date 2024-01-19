@@ -1,6 +1,8 @@
 package com.example.deliciousandy.components
 
 import android.content.res.Resources.Theme
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,6 +10,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -26,10 +30,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.MainActivity
+import com.example.deliciousandy.R
 import com.example.deliciousandy.data.Recipe
 
 @Composable
@@ -51,6 +58,10 @@ fun RecipeCard(recipe: Recipe) {
             Card(
                 modifier = Modifier.fillMaxWidth()
             ) {
+                Image(
+                    painter = painterResource(R.drawable.test_spagetti),
+                    contentDescription = "Food Picture",
+                )
                 Text(text = recipe.name)
             }
         }
