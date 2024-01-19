@@ -1,0 +1,76 @@
+name: Delicious Andy 😋
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  cancel-previous:
+    name: Cancel Previous
+    permissions:
+      contents: read
+      actions: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Build
+        uses: styfle/cancel-workflow-action@0.12.0
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+  assemble:
+    name: Assemble
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    needs: cancel-previous
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - name: "Assemble"
+        run: make clean assemble
+
+  bundle:
+    name: Bundle
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    needs: cancel-previous
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - name: Bundle
+        run: make clean bundle
+
+  lint:
+    name: Lint
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    needs: cancel-previous
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - name: Lint
+        run: make clean lint
