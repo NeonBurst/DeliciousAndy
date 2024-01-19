@@ -19,7 +19,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -53,20 +53,22 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun update() {
-
         setContent {
             DeliciousAndyTheme {
+                var showAddUI: Boolean by remember { mutableStateOf(false) }
                 // A surface container using the 'background' color from the theme
-                Surface(
+                Scaffold(
+                    floatingActionButton = {FloatingActionButton(onClick = {showAddUI = !showAddUI}) {
+                        Icon(Icons.Filled.Add, "Add button")
+                    }},
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    containerColor = MaterialTheme.colorScheme.background
+
                 ) {
-                    var showAddUI: Boolean by remember { mutableStateOf(false) }
+
                     Column {
                         Text(" Recipes", style = MaterialTheme.typography.titleLarge)
-                        FloatingActionButton(onClick = {showAddUI = !showAddUI}) {
-                            Icon(Icons.Filled.Add, "Add button")
-                        }
+
                         LazyColumn {
                             items(recipeList) { sample ->
                                 RecipeCard(sample)
