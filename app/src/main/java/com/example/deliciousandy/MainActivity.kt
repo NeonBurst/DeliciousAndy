@@ -11,9 +11,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -60,8 +64,8 @@ class MainActivity : ComponentActivity() {
                     var showAddUI: Boolean by remember { mutableStateOf(false) }
                     Column {
                         Text(" Recipes", style = MaterialTheme.typography.titleLarge)
-                        Button(onClick = {showAddUI = !showAddUI}) {
-                            Text("Add")
+                        FloatingActionButton(onClick = {showAddUI = !showAddUI}) {
+                            Icon(Icons.Filled.Add, "Add button")
                         }
                         LazyColumn {
                             items(recipeList) { sample ->
