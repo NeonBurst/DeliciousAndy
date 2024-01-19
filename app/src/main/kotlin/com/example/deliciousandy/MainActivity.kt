@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -62,7 +64,7 @@ class MainActivity : ComponentActivity() {
 
                 // A surface container using the 'background' color from the theme
                 Scaffold(
-                    topBar = { TopAppBar(title = { Text("Recipes") })},
+                    topBar = { TopAppBar(title = { Text("Recipes") }) },
                     floatingActionButton = {
                         FloatingActionButton(onClick = { showAddUI = !showAddUI }) {
                             Icon(Icons.Filled.Add, "Add button")
@@ -90,7 +92,8 @@ class MainActivity : ComponentActivity() {
                 if (showAddUI) {
                     Card(
                         modifier = Modifier
-                        .fillMaxSize()) {
+                            .fillMaxSize()
+                    ) {
                         Column {
                             Text(
                                 text = "Add Recipe",
@@ -124,11 +127,26 @@ class MainActivity : ComponentActivity() {
 
                             ActivityResultContracts.PickVisualMedia()
 
-                            Button(onClick = {
-                                addRecipe(Recipe(titleText, bodyText))
-                                showAddUI = false
-                            }) {
-                                Text("Add")
+                            Row {
+                                Button(
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color(0xFAB6B6B6)
+                                    ),
+                                    onClick = {
+                                        showAddUI = false
+                                    }
+                                ) {
+                                    Text("Cancel")
+                                }
+
+                                Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
+
+                                Button(onClick = {
+                                    addRecipe(Recipe(titleText, bodyText))
+                                    showAddUI = false
+                                }) {
+                                    Text("Add")
+                                }
                             }
                         }
 
@@ -171,20 +189,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DeliciousAndyTheme {
-        Greeting("Android")
-    }
 }
