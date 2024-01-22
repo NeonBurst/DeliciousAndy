@@ -1,6 +1,4 @@
-package com.example.deliciousandy.data
-
-import com.example.deliciousandy.data.Recipe
+package com.example.deliciousandy.data.models
 
 data class AppData(
     var username: String = "",

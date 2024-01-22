@@ -1,4 +1,4 @@
-package com.example.deliciousandy.components
+package com.example.deliciousandy.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -32,7 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.R
-import com.example.deliciousandy.data.Recipe
+import com.example.deliciousandy.data.models.Recipe
 
 @Composable
 fun RecipeCard(recipe: Recipe) {

@@ -1,7 +1,7 @@
 package com.example.deliciousandy.utility
 
 import android.content.Context
-import com.example.deliciousandy.data.AppData
+import com.example.deliciousandy.data.models.AppData
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.File
