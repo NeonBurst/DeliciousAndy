@@ -32,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -77,11 +78,15 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .padding(padding)
                     ) {
-                        LazyColumn {
-                            items(recipeList) { sample ->
-                                RecipeCard(sample)
+                        if (recipeList.size > 0) {
+                            LazyColumn {
+                                items(recipeList) { sample ->
+                                    RecipeCard(sample)
 
+                                }
                             }
+                        } else {
+                            Text("No Data", color = Color.Gray, textAlign = TextAlign.Center, modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
                         }
 
                     }
