@@ -1,4 +1,4 @@
-package com.example.deliciousandy.components
+package com.example.deliciousandy.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

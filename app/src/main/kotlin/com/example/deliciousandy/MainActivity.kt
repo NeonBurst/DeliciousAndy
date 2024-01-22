@@ -40,7 +40,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.deliciousandy.components.RecipeCard
+import com.example.deliciousandy.ui.components.RecipeCard
 import com.example.deliciousandy.data.AppData
 import com.example.deliciousandy.data.Recipe
 import com.example.deliciousandy.ui.theme.DeliciousAndyTheme
