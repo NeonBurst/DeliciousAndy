@@ -152,7 +152,7 @@ class MainActivity : ComponentActivity() {
                                 Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
 
                                 Button(onClick = {
-                                    addRecipe(Recipe(titleText, bodyText))
+                                    addRecipe(Recipe(titleText, bodyText, servingSize = servingSize.toInt()))
                                     showAddUI = false
                                 }) {
                                     Text("Add")
