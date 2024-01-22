@@ -30,12 +30,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.R
 import com.example.deliciousandy.data.models.Recipe
 
 @Composable
-fun RecipeCard(recipe: Recipe) {
+fun RecipeCard(
+    recipe: Recipe
+) {
     var isExpanded by remember { mutableStateOf(false) }
 
     Surface(
@@ -69,7 +72,7 @@ fun RecipeCard(recipe: Recipe) {
                     )
                     Text(text = recipe.servingSize.toString(), modifier = Modifier.weight(0.8f))
                 }
-                
+
             }
         }
         if (isExpanded) {
@@ -110,7 +113,8 @@ fun RecipeCard(recipe: Recipe) {
                     Row {
                         IconButton(
                             onClick = {
-                                println("Star")},
+                                println("Star")
+                            },
                             modifier = Modifier.padding(8.dp)
                         ) {
                             Icon(
@@ -120,7 +124,7 @@ fun RecipeCard(recipe: Recipe) {
                             )
                         }
                         IconButton(
-                            onClick = {println("No")},
+                            onClick = { println("No") },
                             modifier = Modifier.padding(8.dp)
                         ) {
                             Icon(
@@ -130,7 +134,7 @@ fun RecipeCard(recipe: Recipe) {
                             )
                         }
                         IconButton(
-                            onClick = {println("No")},
+                            onClick = { println("No") },
                             modifier = Modifier.padding(8.dp)
                         ) {
                             Icon(
@@ -146,4 +150,12 @@ fun RecipeCard(recipe: Recipe) {
     }
 }
 
-
+@Composable
+@Preview
+fun RecipeCardPreview() {
+    val recipe = Recipe(
+        name = "Spaghetti",
+        body = "Very good"
+    )
+    RecipeCard(recipe = recipe)
+}
