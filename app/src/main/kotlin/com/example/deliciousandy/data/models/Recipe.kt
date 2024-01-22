@@ -1,4 +1,4 @@
-package com.example.deliciousandy.data
+package com.example.deliciousandy.data.models
 
 data class Recipe(
     val name: String,

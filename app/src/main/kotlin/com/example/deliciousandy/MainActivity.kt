@@ -41,8 +41,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.ui.components.RecipeCard
-import com.example.deliciousandy.data.AppData
-import com.example.deliciousandy.data.Recipe
+import com.example.deliciousandy.data.models.AppData
+import com.example.deliciousandy.data.models.Recipe
 import com.example.deliciousandy.ui.theme.DeliciousAndyTheme
 import com.example.deliciousandy.utility.ConverterJSON
 
