@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -56,7 +57,19 @@ fun RecipeCard(recipe: Recipe) {
                     painter = painterResource(R.drawable.test_spagetti),
                     contentDescription = "Food Picture"
                 )
-                Text(text = recipe.name)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(text = recipe.name, modifier = Modifier.weight(1f))
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = "People",
+                        modifier = Modifier.weight(0.2f)
+                    )
+                    Text(text = recipe.servingSize.toString(), modifier = Modifier.weight(0.8f))
+                }
+                
             }
         }
         if (isExpanded) {
