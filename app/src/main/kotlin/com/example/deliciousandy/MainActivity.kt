@@ -113,7 +113,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         } else {
-                            Text("No Data", color = Color.Gray, textAlign = TextAlign.Center, modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
+                            Text(getString(R.string.no_data), color = Color.Gray, textAlign = TextAlign.Center, modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
                         }
 
                     }
