@@ -14,4 +14,5 @@
     <string name="favourite">Favorit</string>
     <string name="edit">Bearbeiten</string>
     <string name="delete">Löschen</string>
+    <string name="cancel">Abbrechen</string>
 </resources>

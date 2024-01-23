@@ -179,7 +179,7 @@ class MainActivity : ComponentActivity() {
                                         showAddUI = false
                                     }
                                 ) {
-                                    Text("Cancel")
+                                    Text(getString(R.string.cancel))
                                 }
 
                                 Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
