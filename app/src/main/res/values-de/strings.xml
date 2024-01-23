@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Leckeres Andy</string>
+    <string name="home">Startseite</string>
+    <string name="info">Info</string>
+    <string name="settings">Einstellungen</string>
+    <string name="recipes">Rezepte</string>
+    <string name="add">Hinzufügen</string>
+    <string name="add_recipe">Rezept hinzufügen</string>
+    <string name="recipe_name">Rezeptname</string>
+    <string name="recipe_instructions">Rezeptanweisungen</string>
+    <string name="serving_size">Portionsgröße</string>
+    <string name="no_data">Keine Daten</string>
+    <string name="favourite">Favorit</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="delete">Löschen</string>
+</resources>
