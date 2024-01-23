@@ -141,13 +141,13 @@ class MainActivity : ComponentActivity() {
 
                             Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
 
-                            var bodyText by remember { mutableStateOf("") } // TODO Refactor Text Fields
+                            var bodyText by remember { mutableStateOf("") }
                             FancyTextField(value = bodyText, placeHolderText = getString(R.string.recipe_instructions), maxLines = 99) {
                                     newText ->
                                 bodyText = newText
                             }
 
-                            var servingSize by remember { mutableStateOf("") } // TODO Refactor Text Fields
+                            var servingSize by remember { mutableStateOf("") }
 
                             FancyTextField(value = bodyText, placeHolderText = getString(R.string.serving_size), keyboardType = KeyboardOptions(keyboardType = KeyboardType.Number)) {
                                     newText ->
