@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Delicioso Andy</string>
+    <string name="home">Inicio</string>
+    <string name="info">Información</string>
+    <string name="settings">Ajustes</string>
+    <string name="recipes">Recetas</string>
+    <string name="add">Agregar</string>
+    <string name="add_recipe">Agregar Receta</string>
+    <string name="recipe_name">Nombre de la Receta</string>
+    <string name="recipe_instructions">Instrucciones de la Receta</string>
+    <string name="serving_size">Tamaño de la Porción</string>
+    <string name="no_data">Sin datos</string>
+    <string name="favourite">Favorito</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
+    <string name="cancel">Cancelar</string>
+</resources>

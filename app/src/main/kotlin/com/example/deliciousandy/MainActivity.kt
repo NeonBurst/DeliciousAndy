@@ -69,23 +69,29 @@ class MainActivity : ComponentActivity() {
 
                 // A surface container using the 'background' color from the theme
                 Scaffold(
-                    topBar = { TopAppBar(title = { Text("Recipes") }) },
+                    topBar = { TopAppBar(title = { Text(getString(R.string.recipes)) }) },
                     floatingActionButton = {
                         FloatingActionButton(onClick = { showAddUI = !showAddUI }) {
-                            Icon(Icons.Filled.Add, "Add button")
+                            Icon(Icons.Filled.Add, getString(R.string.add))
                         }
 
 
                     },
                     bottomBar = { BottomAppBar(
                         actions = {
-                            IconBtn(imageVector = Icons.Filled.Home, tint = Color.Black, contentDescription = "Home") {
+                            IconBtn(imageVector = Icons.Filled.Home, tint = Color.Black, contentDescription = getString(
+                                R.string.home
+                            )) {
                                 println("Home")
                             }
-                            IconBtn(imageVector = Icons.Filled.Info, tint = Color.Black, contentDescription = "Info") {
+                            IconBtn(imageVector = Icons.Filled.Info, tint = Color.Black, contentDescription = getString(
+                                R.string.info
+                            )) {
 
                             }
-                            IconBtn(imageVector = Icons.Filled.Settings, tint = Color.Black, contentDescription = "") {
+                            IconBtn(imageVector = Icons.Filled.Settings, tint = Color.Black, contentDescription = getString(
+                                R.string.settings
+                            )) {
 
                             }
 
@@ -122,19 +128,19 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Column {
                             Text(
-                                text = "Add Recipe",
+                                text = getString(R.string.add_recipe),
                                 modifier = Modifier
                                     .padding(16.dp),
                                 textAlign = TextAlign.Center,
                             )
 
-                            var titleText by remember { mutableStateOf("") }
+                            var titleText by remember { mutableStateOf("") } // TODO Refactor Text Fields
                             TextField(
                                 value = titleText,
                                 onValueChange = { newText ->
                                     titleText = newText
                                 },
-                                label = { Text(text = "Recipe Name") },
+                                label = { Text(text = getString(R.string.recipe_name)) },
                                 maxLines = 1
 
                             )
@@ -147,17 +153,17 @@ class MainActivity : ComponentActivity() {
                                 onValueChange = { newText ->
                                     bodyText = newText
                                 },
-                                label = { Text(text = "Recipe Instructions") },
+                                label = { Text(text = getString(R.string.recipe_instructions)) },
 
                                 )
 
-                            var servingSize by remember { mutableStateOf("") }
+                            var servingSize by remember { mutableStateOf("") } // TODO Refactor Text Fields
                             TextField(
                                 value = servingSize,
                                 onValueChange = { newText ->
                                     servingSize = newText
                                 },
-                                label = { Text(text = "Serving Size") },
+                                label = { Text(text = getString(R.string.serving_size)) },
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
 
                                 )
@@ -173,7 +179,7 @@ class MainActivity : ComponentActivity() {
                                         showAddUI = false
                                     }
                                 ) {
-                                    Text("Cancel")
+                                    Text(getString(R.string.cancel))
                                 }
 
                                 Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
@@ -182,7 +188,7 @@ class MainActivity : ComponentActivity() {
                                     addRecipe(Recipe(titleText, bodyText, servingSize = servingSize.toInt()))
                                     showAddUI = false
                                 }) {
-                                    Text("Add")
+                                    Text(getString(R.string.add))
                                 }
                             }
                         }
@@ -222,7 +228,7 @@ class MainActivity : ComponentActivity() {
 
             recipeList = data.recipeList
         } else {
-            Toast.makeText(this, "No data", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.no_data), Toast.LENGTH_LONG).show()
         }
     }
 
