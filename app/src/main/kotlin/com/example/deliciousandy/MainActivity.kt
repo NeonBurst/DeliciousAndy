@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.ui.components.RecipeCard
 import com.example.deliciousandy.data.models.AppData
 import com.example.deliciousandy.data.models.Recipe
+import com.example.deliciousandy.ui.components.IconBtn
 import com.example.deliciousandy.ui.theme.DeliciousAndyTheme
 import com.example.deliciousandy.utility.ConverterJSON
 
@@ -78,15 +79,16 @@ class MainActivity : ComponentActivity() {
                     },
                     bottomBar = { BottomAppBar(
                         actions = {
-                        IconButton(onClick = { /* do something */ }) {
-                            Icon(Icons.Filled.Home, contentDescription = "Localized description")
-                        }
-                        IconButton(onClick = { /* do something */ }) {
-                            Icon(Icons.Filled.Info, contentDescription = "Localized description")
-                        }
-                        IconButton(onClick = { /* do something */ }) {
-                                Icon(Icons.Filled.Settings, contentDescription = "Localized description")
-                        }
+                            IconBtn(imageVector = Icons.Filled.Home, tint = Color.Black, contentDescription = "Home") {
+                                println("Home")
+                            }
+                            IconBtn(imageVector = Icons.Filled.Info, tint = Color.Black, contentDescription = "Info") {
+
+                            }
+                            IconBtn(imageVector = Icons.Filled.Settings, tint = Color.Black, contentDescription = "") {
+
+                            }
+
                       }
                     )
                     },
@@ -139,7 +141,7 @@ class MainActivity : ComponentActivity() {
 
                             Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
 
-                            var bodyText by remember { mutableStateOf("") }
+                            var bodyText by remember { mutableStateOf("") } // TODO Refactor Text Fields
                             TextField(
                                 value = bodyText,
                                 onValueChange = { newText ->

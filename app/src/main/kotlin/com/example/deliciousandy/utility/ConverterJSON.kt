@@ -10,7 +10,7 @@ import java.io.FileOutputStream
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 
-class ConverterJSON {
+class ConverterJSON { // TODO Use data model instead of JSON File
 
     fun convertRecipeJSON(data: AppData): String {
         val gson = Gson()

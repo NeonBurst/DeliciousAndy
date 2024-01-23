@@ -74,7 +74,7 @@ fun RecipeCard(
 
             }
         }
-        if (isExpanded) {
+        if (isExpanded) { // TODO Combine expanded and not expanded
             Card(
                 modifier = Modifier
                     .fillMaxSize() // Make the Card take the full available space
