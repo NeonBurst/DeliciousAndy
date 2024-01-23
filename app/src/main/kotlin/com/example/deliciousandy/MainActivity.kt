@@ -97,7 +97,7 @@ class MainActivity : ComponentActivity() {
                       }
                     )
                     },
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize().padding(16.dp),
                     containerColor = MaterialTheme.colorScheme.background
 
                 ) { padding ->

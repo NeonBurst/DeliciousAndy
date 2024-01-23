@@ -3,12 +3,9 @@ package com.example.deliciousandy.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -17,16 +14,13 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -40,98 +34,84 @@ fun RecipeCard(
     recipe: Recipe
 ) {
     var isExpanded by remember { mutableStateOf(false) }
+    val horizontalPadding = if (isExpanded) 16.dp else 0.dp
 
-    Surface(
-        modifier = Modifier.padding(16.dp),
-        shape = MaterialTheme.shapes.medium, shadowElevation = 5.dp
-
+    Card(
+        shape = MaterialTheme.shapes.medium,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                isExpanded = !isExpanded
+            }
     ) {
-        Column(
+        if (isExpanded) {
+            Text(
+                text = recipe.name,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier
+                    .fillMaxWidth() // Make the Text take the full width
+                    .padding(bottom = 8.dp) // Add bottom padding for separation
+                    .padding(horizontal = horizontalPadding)
+            )
+        }
+
+        Image(
             modifier = Modifier
-                .clickable {
-                    isExpanded = !isExpanded
+                .padding(horizontal = horizontalPadding),
+            painter = painterResource(R.drawable.test_spagetti),
+            contentDescription = stringResource(R.string.picture_of) + recipe.name
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(5.dp)
+                .padding(horizontal = horizontalPadding),
+            horizontalArrangement = if (isExpanded) Arrangement.End else Arrangement.Absolute.SpaceBetween,
 
-                }
-        ) {
-            Card(
-                modifier = Modifier.fillMaxWidth()
             ) {
-                Image(
-                    painter = painterResource(R.drawable.test_spagetti),
-                    contentDescription = "Food Picture"
+            if (!isExpanded) {
+                Text(
+                    text = recipe.name,
                 )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Text(text = recipe.name, modifier = Modifier.weight(1f))
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "People",
-                        modifier = Modifier.weight(0.2f)
-                    )
-                    Text(text = recipe.servingSize.toString(), modifier = Modifier.weight(0.8f))
-                }
-
+            }
+            Row {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = stringResource(id = R.string.serving_size),
+                )
+                Text(
+                    text = recipe.servingSize.toString(),
+                )
             }
         }
-        if (isExpanded) { // TODO Combine expanded and not expanded
-            Card(
+
+        if (isExpanded) {
+            Text(
+                text = recipe.body,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier
-                    .fillMaxSize() // Make the Card take the full available space
-                    .clickable {
-                        isExpanded = !isExpanded
-                    }
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize() // Make the Column take the full available space
-                        .padding(16.dp), // Add padding for better aesthetics
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = recipe.name,
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier
-                            .fillMaxWidth() // Make the Text take the full width
-                            .padding(bottom = 8.dp) // Add bottom padding for separation
-                    )
+                    .fillMaxWidth()
+                    .padding(horizontal = horizontalPadding), // Make the Text take the full width
+            )
 
-                    Image(
-                        painter = painterResource(R.drawable.test_spagetti),
-                        contentDescription = "Food Picture",
-                        modifier = Modifier.clip(RoundedCornerShape(10.dp))
-                    )
+            Row {
+                IconBtn(
+                    imageVector = Icons.Default.Star,
+                    tint = if (recipe.starred) Color.Yellow else Color.Black,
+                    contentDescription = stringResource(R.string.favourite),
+                ) { println("Star Pressed") }
 
-                    Text(
-                        text = recipe.body,
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.fillMaxWidth() // Make the Text take the full width
-                    )
+                IconBtn(
+                    imageVector = Icons.Default.Edit,
+                    tint = Color.Black,
+                    contentDescription = stringResource(R.string.edit),
+                ) { println("Edit Pressed") }
 
-                    Row {
-                        IconBtn(
-                            imageVector = Icons.Default.Star,
-                            tint = if (recipe.starred) Color.Yellow else Color.Black,
-                            contentDescription = stringResource(R.string.favourite),
-                        ) { println("Star Pressed") }
-
-                        IconBtn(
-                            imageVector = Icons.Default.Edit,
-                            tint = Color.Black,
-                            contentDescription = stringResource(R.string.edit),
-                        ) { println("Edit Pressed") }
-
-
-                        IconBtn(
-                            imageVector = Icons.Default.Delete,
-                            tint = Color.Black,
-                            contentDescription = stringResource(R.string.delete),
-                        ) { println("Delete Pressed") }
-
-                    }
-                }
+                IconBtn(
+                    imageVector = Icons.Default.Delete,
+                    tint = Color.Black,
+                    contentDescription = stringResource(R.string.delete),
+                ) { println("Delete Pressed") }
             }
         }
     }
