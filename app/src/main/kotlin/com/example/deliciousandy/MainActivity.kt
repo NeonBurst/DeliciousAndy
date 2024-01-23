@@ -25,11 +25,9 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,10 +38,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.deliciousandy.ui.components.RecipeCard
 import com.example.deliciousandy.data.models.AppData
 import com.example.deliciousandy.data.models.Recipe
+import com.example.deliciousandy.ui.components.FancyTextField
 import com.example.deliciousandy.ui.components.IconBtn
+import com.example.deliciousandy.ui.components.RecipeCard
 import com.example.deliciousandy.ui.theme.DeliciousAndyTheme
 import com.example.deliciousandy.utility.ConverterJSON
 
@@ -134,39 +133,26 @@ class MainActivity : ComponentActivity() {
                                 textAlign = TextAlign.Center,
                             )
 
-                            var titleText by remember { mutableStateOf("") } // TODO Refactor Text Fields
-                            TextField(
-                                value = titleText,
-                                onValueChange = { newText ->
-                                    titleText = newText
-                                },
-                                label = { Text(text = getString(R.string.recipe_name)) },
-                                maxLines = 1
-
-                            )
+                            var titleText by remember { mutableStateOf("") }
+                            FancyTextField(value = titleText, placeHolderText = getString(R.string.recipe_name)) {
+                                    newText ->
+                                titleText = newText
+                            }
 
                             Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
 
                             var bodyText by remember { mutableStateOf("") } // TODO Refactor Text Fields
-                            TextField(
-                                value = bodyText,
-                                onValueChange = { newText ->
-                                    bodyText = newText
-                                },
-                                label = { Text(text = getString(R.string.recipe_instructions)) },
-
-                                )
+                            FancyTextField(value = bodyText, placeHolderText = getString(R.string.recipe_instructions), maxLines = 99) {
+                                    newText ->
+                                bodyText = newText
+                            }
 
                             var servingSize by remember { mutableStateOf("") } // TODO Refactor Text Fields
-                            TextField(
-                                value = servingSize,
-                                onValueChange = { newText ->
-                                    servingSize = newText
-                                },
-                                label = { Text(text = getString(R.string.serving_size)) },
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
 
-                                )
+                            FancyTextField(value = bodyText, placeHolderText = getString(R.string.serving_size), keyboardType = KeyboardOptions(keyboardType = KeyboardType.Number)) {
+                                    newText ->
+                                servingSize = newText
+                            }
 
 
 
