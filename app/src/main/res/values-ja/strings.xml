@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">美味しいアンディ</string>
+    <string name="home">ホーム</string>
+    <string name="info">情報</string>
+    <string name="settings">設定</string>
+    <string name="recipes">レシピ</string>
+    <string name="add">追加</string>
+    <string name="add_recipe">レシピの追加</string>
+    <string name="recipe_name">レシピ名</string>
+    <string name="recipe_instructions">レシピの手順</string>
+    <string name="serving_size">一人前のサイズ</string>
+    <string name="no_data">データなし</string>
+    <string name="favourite">お気に入り</string>
+    <string name="edit">編集</string>
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
+
+</resources>
