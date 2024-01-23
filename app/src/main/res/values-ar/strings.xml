@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">آندي لذيذ</string>
+    <string name="home">الرئيسية</string>
+    <string name="info">معلومات</string>
+    <string name="settings">الإعدادات</string>
+    <string name="recipes">الوصفات</string>
+    <string name="add">إضافة</string>
+    <string name="add_recipe">إضافة وصفة</string>
+    <string name="recipe_name">اسم الوصفة</string>
+    <string name="recipe_instructions">تعليمات الوصفة</string>
+    <string name="serving_size">حجم التقديم</string>
+    <string name="no_data">لا توجد بيانات</string>
+    <string name="favourite">المفضلة</string>
+    <string name="edit">تحرير</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">إلغاء</string>
+
+</resources>

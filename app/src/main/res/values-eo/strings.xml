@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gusta Andy</string>
+    <string name="home">Hejmo</string>
+    <string name="info">Informoj</string>
+    <string name="settings">Agordoj</string>
+    <string name="recipes">Receptoj</string>
+    <string name="add">Aldoni</string>
+    <string name="add_recipe">Aldoni Recepton</string>
+    <string name="recipe_name">Recepto Nomo</string>
+    <string name="recipe_instructions">Recepto Instrukcioj</string>
+    <string name="serving_size">Servokvanto</string>
+    <string name="no_data">Neniu datumo</string>
+    <string name="favourite">Favorata</string>
+    <string name="edit">Redakti</string>
+    <string name="delete">Forigi</string>
+    <string name="cancel">Nuligi</string>
+</resources>
