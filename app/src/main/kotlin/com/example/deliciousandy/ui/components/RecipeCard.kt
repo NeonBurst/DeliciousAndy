@@ -16,7 +16,6 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -30,12 +29,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.R
 import com.example.deliciousandy.data.models.Recipe
 
 @Composable
-fun RecipeCard(recipe: Recipe) {
+fun RecipeCard(
+    recipe: Recipe
+) {
     var isExpanded by remember { mutableStateOf(false) }
 
     Surface(
@@ -69,7 +71,7 @@ fun RecipeCard(recipe: Recipe) {
                     )
                     Text(text = recipe.servingSize.toString(), modifier = Modifier.weight(0.8f))
                 }
-                
+
             }
         }
         if (isExpanded) {
@@ -108,37 +110,25 @@ fun RecipeCard(recipe: Recipe) {
                     )
 
                     Row {
-                        IconButton(
-                            onClick = {
-                                println("Star")},
-                            modifier = Modifier.padding(8.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Star,
-                                tint = if (recipe.starred) Color.Yellow else Color.Black,
-                                contentDescription = ""
-                            )
-                        }
-                        IconButton(
-                            onClick = {println("No")},
-                            modifier = Modifier.padding(8.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Edit,
-                                tint = Color.Black,
-                                contentDescription = ""
-                            )
-                        }
-                        IconButton(
-                            onClick = {println("No")},
-                            modifier = Modifier.padding(8.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                tint = Color.Black,
-                                contentDescription = ""
-                            )
-                        }
+                        IconBtn(
+                            imageVector = Icons.Default.Star,
+                            tint = if (recipe.starred) Color.Yellow else Color.Black,
+                            contentDescription = "",
+                        ) { println("Star Pressed") }
+
+                        IconBtn(
+                            imageVector = Icons.Default.Edit,
+                            tint = Color.Black,
+                            contentDescription = "",
+                        ) { println("Edit Pressed") }
+
+
+                        IconBtn(
+                            imageVector = Icons.Default.Delete,
+                            tint = Color.Black,
+                            contentDescription = "",
+                        ) { println("Delete Pressed") }
+
                     }
                 }
             }
@@ -146,4 +136,12 @@ fun RecipeCard(recipe: Recipe) {
     }
 }
 
-
+@Composable
+@Preview
+fun RecipeCardPreview() {
+    val recipe = Recipe(
+        name = "Spaghetti",
+        body = "Very good"
+    )
+    RecipeCard(recipe = recipe)
+}
