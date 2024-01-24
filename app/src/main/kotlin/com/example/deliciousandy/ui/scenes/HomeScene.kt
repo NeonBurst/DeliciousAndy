@@ -1,7 +1,6 @@
 package com.example.deliciousandy.ui.scenes
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,14 +15,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.R
-import com.example.deliciousandy.data.models.Recipe
 import com.example.deliciousandy.data.repos.RecipeRepository
 import com.example.deliciousandy.ui.components.RecipeCard
 
 @Composable
-fun HomeScene(
-    padding: PaddingValues = PaddingValues(16.dp),
-) {
+fun HomeScene() {
     val ctx = LocalContext.current
     val repository = RecipeRepository(ctx = ctx)
 
@@ -31,7 +27,7 @@ fun HomeScene(
 
     Column(
         modifier = Modifier
-            .padding(padding)
+            .padding(16.dp)
     ) {
         if (recipes.isNotEmpty()) {
             LazyColumn {

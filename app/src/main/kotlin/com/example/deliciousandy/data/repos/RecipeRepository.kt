@@ -1,8 +1,6 @@
 package com.example.deliciousandy.data.repos
 
 import android.content.Context
-import android.widget.Toast
-import com.example.deliciousandy.R
 import com.example.deliciousandy.data.models.AppData
 import com.example.deliciousandy.data.models.Recipe
 import com.example.deliciousandy.utility.ConverterJSON
@@ -20,5 +18,15 @@ class RecipeRepository(
         } ?: emptyList()
     }
 
-    // TODO: add recipe returns recipe that is added
+    fun addRecipe(recipe: Recipe): Recipe {
+        var recipeList = loadRecipes()
+        recipeList += recipe
+
+        converterJSON.saveJsonToFile(
+            converterJSON.convertRecipeJSON(AppData("U", recipeList)),
+            "data.json",
+            ctx
+        )
+        return recipe
+    }
 }
