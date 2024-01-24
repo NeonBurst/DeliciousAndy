@@ -40,6 +40,7 @@ fun RecipeCard(
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
             .fillMaxWidth()
+            .padding(vertical = 10.dp)
             .clickable {
                 isExpanded = !isExpanded
             }

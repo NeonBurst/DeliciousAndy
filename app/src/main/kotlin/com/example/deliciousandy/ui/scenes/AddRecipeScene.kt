@@ -18,20 +18,28 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliciousandy.R
+import com.example.deliciousandy.data.models.Recipe
+import com.example.deliciousandy.data.repos.RecipeRepository
 import com.example.deliciousandy.ui.components.FancyTextField
 
 @Composable
-fun AddScene() {
+fun AddScene(
+    onExit: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxSize()
     ) {
+        val ctx = LocalContext.current
+        val repository = RecipeRepository(ctx = ctx)
+
         Column {
             Text(
                 text = stringResource(R.string.add_recipe),
@@ -62,33 +70,37 @@ fun AddScene() {
             var servingSize by remember { mutableStateOf("") }
 
             FancyTextField(
-                value = bodyText,
+                value = servingSize,
                 placeHolderText = stringResource(R.string.serving_size),
                 keyboardType = KeyboardOptions(keyboardType = KeyboardType.Number)
             ) { newText ->
                 servingSize = newText
             }
-            
+
             Row {
                 Button(
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFAB6B6B6)
                     ),
-                    onClick = {
-                        //Hide UI
-                    }
+                    onClick = onExit
                 ) {
                     Text(stringResource(R.string.cancel))
                 }
 
                 Divider(modifier = Modifier.size(20.dp), color = Color.Transparent)
 
-                Button(onClick = {
-                    //Hide UI
-                    //Add Recipe
-                    //addRecipe(Recipe(titleText, bodyText, servingSize = servingSize.toInt()))
-                    //showAddUI = false
-                }) {
+                Button(
+                    onClick = {
+                        repository.addRecipe(
+                            Recipe(
+                                titleText,
+                                bodyText,
+                                servingSize = servingSize.toInt()
+                            )
+                        )
+                        onExit()
+                    }
+                ) {
                     Text(stringResource(R.string.add))
                 }
             }
@@ -99,5 +111,5 @@ fun AddScene() {
 @Preview
 @Composable
 fun AddScenePreview() {
-    AddScene()
+    AddScene {}
 }
