@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -42,7 +40,8 @@ import com.example.deliciousandy.data.models.AppData
 import com.example.deliciousandy.data.models.Recipe
 import com.example.deliciousandy.ui.components.FancyTextField
 import com.example.deliciousandy.ui.components.IconBtn
-import com.example.deliciousandy.ui.components.RecipeCard
+import com.example.deliciousandy.ui.scenes.AddScene
+import com.example.deliciousandy.ui.scenes.HomeScene
 import com.example.deliciousandy.ui.theme.DeliciousAndyTheme
 import com.example.deliciousandy.utility.ConverterJSON
 
@@ -97,31 +96,18 @@ class MainActivity : ComponentActivity() {
                       }
                     )
                     },
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
                     containerColor = MaterialTheme.colorScheme.background
 
                 ) { padding ->
-                    Column(
-                        modifier = Modifier
-                            .padding(padding)
-                    ) {
-                        if (recipeList.isNotEmpty()) {
-                            LazyColumn {
-                                items(recipeList) { sample ->
-                                    RecipeCard(sample)
-
-                                }
-                            }
-                        } else {
-                            Text(getString(R.string.no_data), color = Color.Gray, textAlign = TextAlign.Center, modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
-                        }
-
-                    }
-
+                    HomeScene(padding)
                 }
 
                 if (showAddUI) {
-                    Card(
+                    AddScene()
+                    /*Card(
                         modifier = Modifier
                             .fillMaxSize()
                     ) {
@@ -180,13 +166,14 @@ class MainActivity : ComponentActivity() {
                         }
 
 
-                    }
+                    }*/
                 }
 
             }
         }
     }
 
+    // FIXME: move to business logic
     private fun addRecipe(recipe: Recipe) {
         recipeList += recipe
         /*val j = ConverterJSON()
