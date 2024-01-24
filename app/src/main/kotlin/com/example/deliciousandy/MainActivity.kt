@@ -40,6 +40,7 @@ import com.example.deliciousandy.data.models.AppData
 import com.example.deliciousandy.data.models.Recipe
 import com.example.deliciousandy.ui.components.FancyTextField
 import com.example.deliciousandy.ui.components.IconBtn
+import com.example.deliciousandy.ui.scenes.AddScene
 import com.example.deliciousandy.ui.scenes.HomeScene
 import com.example.deliciousandy.ui.theme.DeliciousAndyTheme
 import com.example.deliciousandy.utility.ConverterJSON
@@ -105,7 +106,8 @@ class MainActivity : ComponentActivity() {
                 }
 
                 if (showAddUI) {
-                    Card(
+                    AddScene()
+                    /*Card(
                         modifier = Modifier
                             .fillMaxSize()
                     ) {
@@ -164,13 +166,14 @@ class MainActivity : ComponentActivity() {
                         }
 
 
-                    }
+                    }*/
                 }
 
             }
         }
     }
 
+    // FIXME: move to business logic
     private fun addRecipe(recipe: Recipe) {
         recipeList += recipe
         /*val j = ConverterJSON()
