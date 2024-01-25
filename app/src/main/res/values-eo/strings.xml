@@ -15,4 +15,6 @@
     <string name="edit">Redakti</string>
     <string name="delete">Forigi</string>
     <string name="cancel">Nuligi</string>
+    <string name="picture_of">Bildo de </string>
+
 </resources>

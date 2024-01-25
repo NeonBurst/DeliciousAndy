@@ -1,4 +1,4 @@
-package com.example.deliciousandy.ui.scenes
+package com.example.deliciousandy.ui.scenes.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -21,9 +21,10 @@ import com.example.deliciousandy.ui.components.RecipeCard
 @Composable
 fun HomeScene() {
     val ctx = LocalContext.current
-    val repository = RecipeRepository(ctx = ctx)
 
-    val recipes = repository.loadRecipes()
+    val repository = RecipeRepository(ctx)
+    val viewModel = HomeViewModel(repository = repository)
+    val recipes = viewModel.loadRecipes()
 
     Column(
         modifier = Modifier
