@@ -15,4 +15,6 @@
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
     <string name="cancel">Cancelar</string>
+    <string name="picture_of">Imagen de </string>
+
 </resources>

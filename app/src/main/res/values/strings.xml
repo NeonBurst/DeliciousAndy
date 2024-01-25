@@ -14,5 +14,5 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
-    <string name="picture_of" translatable="false">"Picture of "</string>
+    <string name="picture_of">"Picture of "</string>
 </resources>
