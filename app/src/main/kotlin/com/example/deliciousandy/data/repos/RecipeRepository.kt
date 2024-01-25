@@ -19,8 +19,7 @@ class RecipeRepository(
     }
 
     fun addRecipe(recipe: Recipe): Recipe {
-        var recipeList = loadRecipes()
-        recipeList += recipe
+        val recipeList = loadRecipes() + recipe
 
         converterJSON.saveJsonToFile(
             converterJSON.convertRecipeJSON(AppData("U", recipeList)),

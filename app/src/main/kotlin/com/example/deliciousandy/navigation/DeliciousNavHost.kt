@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.deliciousandy.ui.scenes.AddScene
-import com.example.deliciousandy.ui.scenes.HomeScene
+import com.example.deliciousandy.ui.scenes.home.HomeScene
 
 @Composable
 fun DeliciousNavHost(
