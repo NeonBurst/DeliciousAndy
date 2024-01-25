@@ -1,7 +1,7 @@
 BUILD_TYPE ?= Debug
 GRADLE_ARGS ?= --build-cache
 
-all: clean lint assemble
+all: clean lint test assemble
 .PHONY: all
 
 assemble:
@@ -21,5 +21,9 @@ clean:
 .PHONY: clean
 
 lint:
-	./gradlew lint${BUILD_TYPE}
+	./gradlew lint${BUILD_TYPE} ${GRADLE_ARGS}
 .PHONY: lint
+
+test:
+	./gradlew test${BUILD_TYPE}UnitTest ${GRADLE_ARGS}
+.PHONY: test
