@@ -70,7 +70,7 @@ dependencies {
 
     // Testing
     testImplementation("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation("io.mockk:mockk:1.13.13")
 
     testImplementation("io.github.hellocuriosity:model-forge:1.3.0")
 
